@@ -25,7 +25,7 @@ boolean flagHighlight = false;
 boolean flagWork = false;
 
 int[] tablo = {10, 30, 1350, 900};
-int[] tabloW = {0, 40, 135, 270, 335, 370, 435, 500, 565, 630, 690, 
+int[] tabloW = {0, 40, 135, 270, 335, 370, 435, 500, 565, 630, 690,
   745, 955, 1035, 1110, 1185, 1270, tablo[2]};
 
 String[][] data = new String[60][20];
@@ -53,8 +53,8 @@ int s = tablo[1] + tablo[3] - 11;
 
 Table table;
 
-//***************************************************** 
-void settings() {  
+//*****************************************************
+void settings() {
   size(tablo[2] + 20, tablo[3] + 60);
 }
 void setup() {
@@ -88,7 +88,16 @@ void fileSelected(File selection) {
     println("User selected " + selection.getAbsolutePath());
     //  "Пользователь выбрал "
     filePath1 = selection.getAbsolutePath();
-    filePath = filePath1.substring(0, filePath1.lastIndexOf('/'));
+    
+    //println("DATA: " + filePath1.lastIndexOf('/'));
+
+    if (filePath1.lastIndexOf('/') < 0) {
+      filePath = filePath1.substring(0, filePath1.lastIndexOf('\\'));
+    } else {
+      filePath = filePath1.substring(0, filePath1.lastIndexOf('/'));
+    }
+    
+
     flagWork = true;
   }
 }
